@@ -3,7 +3,7 @@ import filecmp
 LINE_BREAK = "\n"
 fileA = "C:\\compareFiles\\files\\a.txt"
 fileB = "C:\\compareFiles\\files\\b.txt"
-pathResult = "C:\\Users\\Erison\\Documents\\python\\compareFiles\\files\\r.txt"
+pathResult = "C:\\compareFiles\\r.txt"
 
 print("Comparando arquivos.")
 comparisonResult = filecmp.cmp(fileA, fileB, shallow=False) #Shallow False para comparar conteúdo do arquivo, não só metadados
