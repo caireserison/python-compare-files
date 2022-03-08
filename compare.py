@@ -1,8 +1,8 @@
 import filecmp 
 
 LINE_BREAK = "\n"
-fileA = "C:\\Users\\Erison\\Documents\\python\\compareFiles\\files\\a.txt"
-fileB = "C:\\Users\\Erison\\Documents\\python\\compareFiles\\files\\b.txt"
+fileA = "C:\\compareFiles\\files\\a.txt"
+fileB = "C:\\compareFiles\\files\\b.txt"
 pathResult = "C:\\Users\\Erison\\Documents\\python\\compareFiles\\files\\r.txt"
 
 print("Comparando arquivos.")
