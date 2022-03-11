@@ -14,15 +14,15 @@ fileA = pathFileA + "\\" + nameFileA
 fileB = pathFileB + "\\" + nameFileB
 pathResult = "C:\\compareFiles\\r.txt"
 
-print("Comparando arquivos. Início em " + str(datetime.today().strftime(DATE_FORMAT)))
+print("Comparando arquivos. Início em " + datetime.today().strftime(DATE_FORMAT))
 comparisonResult = filecmp.cmp(fileA, fileB, shallow=False) #Shallow False para comparar conteúdo do arquivo, não só metadados
-print("Comparando arquivos. Finalizado em " + str(datetime.today().strftime(DATE_FORMAT)))
+print("Comparando arquivos. Finalizado em " + datetime.today().strftime(DATE_FORMAT))
 
 if comparisonResult == False:
     rowCount = 0
     
     # Abrindo aquivos para comparação linha a linha (atributo enconding disponível se necessário)
-    print("Comparando arquivos linha a linha. Início em " + str(datetime.today().strftime(DATE_FORMAT)))
+    print("Comparando arquivos linha a linha. Início em " + datetime.today().strftime(DATE_FORMAT))
     print("Abrindo arquivos.")
     openFileA = open(fileA)
     rowsFileA = openFileA.readlines()
@@ -48,7 +48,7 @@ if comparisonResult == False:
             print("Linhas do arquivo " + nameFileA + " fora do limite de linhas do arquivo " + nameFileB + ".")
             break
         rowCount += 1
-    print("Comparando arquivos linha a linha. Finalizado em " + str(datetime.today().strftime(DATE_FORMAT)))
+    print("Comparando arquivos linha a linha. Finalizado em " + datetime.today().strftime(DATE_FORMAT))
 else:
     print("Os arquivos são iguais.")
 print("Comparação finalizada.")
