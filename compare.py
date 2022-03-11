@@ -1,29 +1,40 @@
 import filecmp 
+from datetime import datetime
 
 LINE_BREAK = "\n"
-fileA = "C:\\compareFiles\\files\\a.txt"
-fileB = "C:\\compareFiles\\files\\b.txt"
+DATE_FORMAT = '%d/%m/%Y %H:%M:%S'
+
+# Parametrizar variáveis abaixo
+pathFileA = "C:\\compareFiles\\files"
+pathFileB = "C:\\compareFiles\\files"
+nameFileA = "a.txt"
+nameFileB = "b.txt"
+
+fileA = pathFileA + "\\" + nameFileA
+fileB = pathFileB + "\\" + nameFileB
 pathResult = "C:\\compareFiles\\r.txt"
 
-print("Comparando arquivos.")
+print("Comparando arquivos. Início em " + str(datetime.today().strftime(DATE_FORMAT)))
 comparisonResult = filecmp.cmp(fileA, fileB, shallow=False) #Shallow False para comparar conteúdo do arquivo, não só metadados
-
-# Abrindo aquivos para comparação linha a linha (atributo enconding disponível se necessário)
-print("Abrindo arquivos para comparação linha a linha.")
-openFileA = open(fileA)
-rowsFileA = openFileA.readlines()
-openFileB = open(fileB)
-rowsFileB = openFileB.readlines()
+print("Comparando arquivos. Finalizado em " + str(datetime.today().strftime(DATE_FORMAT)))
 
 if comparisonResult == False:
     rowCount = 0
+    
+    # Abrindo aquivos para comparação linha a linha (atributo enconding disponível se necessário)
+    print("Comparando arquivos linha a linha. Início em " + str(datetime.today().strftime(DATE_FORMAT)))
+    print("Abrindo arquivos.")
+    openFileA = open(fileA)
+    rowsFileA = openFileA.readlines()
+    openFileB = open(fileB)
+    rowsFileB = openFileB.readlines()
   
     # Criando arquivo para gravação do resultado da comparação
     fileResult = open(pathResult, "w+") # w+ = cria arquivo se não existir e habilita modo de gravação
     fileResult.close()
   
     # Varrendo linhas do arquivo A
-    print("Iniciando comparação linha a linha.")
+    print("Comparando linhas.")
     for rowFileA in rowsFileA: 
         if rowCount < len(rowsFileB):
             rowFileA = rowFileA.replace(LINE_BREAK, "")
@@ -34,10 +45,10 @@ if comparisonResult == False:
                 fileResult.write(messageRow)
                 fileResult.close()
         else:
-            print("Linhas do arquivo A fora do limite de linhas do arquivo B.")
+            print("Linhas do arquivo " + nameFileA + " fora do limite de linhas do arquivo " + nameFileB + ".")
             break
         rowCount += 1
+    print("Comparando arquivos linha a linha. Finalizado em " + str(datetime.today().strftime(DATE_FORMAT)))
 else:
     print("Os arquivos são iguais.")
-
 print("Comparação finalizada.")
